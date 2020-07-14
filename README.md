@@ -20,5 +20,5 @@ Logic of the program is as follows:
 
 # Possible limitations.
 
-The program has a pitfall. When it came to the way the program encoded and decodes the data, I chose to work with strings instead of bit-shifting operations, frankly because it was just easier to do so, since converting a bit-string into a byte and then back it's quite straightforward.
+The program has a pitfall. When it came to the way the program encoded and decodes the data, I chose to work with strings instead of bit-shifting operations, frankly because it was just easier to do so, since converting a bit-string into a byte and then back is quite straightforward.
 That came with the downside of possibly exceeding the maximum length that a string can have in Java, which is `Integer.MAX_VALUE`. For really, REALLY long files that threshold can be broken quite easily, resulting in an integer overflow. I might inspect into more clever ways to bypass this limitation in the future.
