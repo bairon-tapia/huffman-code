@@ -6,7 +6,7 @@ An implementation of the Huffman Code in Java.
 Logic of the program is as follows:
 
 1. It will look for an input file named "Input.txt" in the resources folder. If it does not exist, it will create one for you, containing [Pablo Neruda's Poema XX](https://bit.ly/2WeUXjl).
-  - The code already supplies a file by default: [The King James Version of the Bible](https://www.gutenberg.org/cache/epub/10/pg10.txt).
+    - The code already supplies a file by default: [The King James Version of the Bible](https://www.gutenberg.org/cache/epub/10/pg10.txt).
     - Obviously, if you wish to see how the program compresses a certain text, you'll have to provide it yourself.
 2. It will show you the file's content on console. Although long texts are useful for running compression benchmarks, they won't be shown quite well on console and they will make it considerably harder to inspect how the program generated the routes for each one of its characters, so keep that in mind.
 3. It will map each of the characters contained in the original text along with their corresponding frequencies and routes.
