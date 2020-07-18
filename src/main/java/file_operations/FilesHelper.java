@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 
 import lombok.NonNull;
 
@@ -32,11 +33,11 @@ public final class FilesHelper {
         return (fileSize == 0);
     }
 
-    public static Boolean getEmptyStatus(@NonNull final Path path) throws IOException {
+    public static Optional<Boolean> getEmptyStatus(@NonNull final Path path) throws IOException {
         if (!exists(path)) {
-            return (null);
+            return (Optional.empty());
         }
-        return (isEmpty(path));
+        return (isEmpty(path) ? Optional.of(true) : Optional.of(false));
     }
 
     public static void create(@NonNull final Path path) throws IOException {

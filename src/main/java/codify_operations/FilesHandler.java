@@ -246,7 +246,7 @@ public final class FilesHandler {
         InputHelper.promptEnterKey();
         System.out.println();
         try {
-            TextFileHelper.writeAppendMode(OUTPUT_FILE_PATH, string);
+            TextFileHelper.writeString(OUTPUT_FILE_PATH, string);
         } catch (final IOException iOException) {
             System.err.println("Critical error: Failed to write string into output file.");
             iOException.printStackTrace();
@@ -264,7 +264,7 @@ public final class FilesHandler {
         InputHelper.promptEnterKey();
         System.out.println();
         try {
-            BinaryFilesHelper.writeAppendMode(BINARY_FILE_PATH, bytes);
+            BinaryFilesHelper.writeBytes(BINARY_FILE_PATH, bytes);
         } catch (final IOException iOException) {
             System.err.println("Critical error: Failed to write bytes into the file.");
             iOException.printStackTrace();

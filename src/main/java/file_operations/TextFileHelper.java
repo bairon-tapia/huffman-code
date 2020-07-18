@@ -2,7 +2,6 @@ package file_operations;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
-import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
 import java.io.IOException;
@@ -21,42 +20,17 @@ public class TextFileHelper {
     }
 
     public static void writeString(@NonNull final Path path, @NonNull final String content) throws IOException {
-        Files.writeString(path, content, NOFOLLOW_LINKS);
-    }
-
-    public static void writeAppendMode(@NonNull final Path path, @NonNull final String content) throws IOException {
-        Files.writeString(path, content, NOFOLLOW_LINKS, APPEND);
-    }
-
-    public static void writeTruncateMode(@NonNull final Path path, @NonNull final String content) throws IOException {
         Files.writeString(path, content, NOFOLLOW_LINKS, TRUNCATE_EXISTING);
-    }
-
-    public static boolean writeIfNotExists(@NonNull final Path path, @NonNull final String content) throws IOException {
-        if (!FilesHelper.exists(path)) {
-            FilesHelper.create(path);
-            writeAppendMode(path, content);
-            return (true);
-        }
-        return (false);
-    }
-
-    public static boolean writeIfIsEmpty(@NonNull final Path path, @NonNull final String content) throws IOException {
-        if (FilesHelper.exists(path) && FilesHelper.isEmpty(path)) {
-            writeAppendMode(path, content);
-            return (true);
-        }
-        return (false);
     }
 
     public static boolean writeIfNotExistsOrIsEmpty(@NonNull final Path path, @NonNull final String content) throws IOException {
         if (!FilesHelper.exists(path)) {
             FilesHelper.create(path);
-            writeAppendMode(path, content);
+            writeString(path, content);
             return (true);
         }
         if (FilesHelper.isEmpty(path)) {
-            writeAppendMode(path, content);
+            writeString(path, content);
             return (true);
         }
         return (false);

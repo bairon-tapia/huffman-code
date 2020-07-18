@@ -1,13 +1,11 @@
 package file_operations;
 
 import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
-import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 
 import lombok.NonNull;
 
@@ -17,44 +15,18 @@ public final class BinaryFilesHelper {
         throw new UnsupportedOperationException();
     }
 
-    public static void writeBytes(@NonNull final Path path, @NonNull byte[] content,
-                                  @NonNull final StandardOpenOption standardOpenOption) throws IOException {
-        Files.write(path, content, NOFOLLOW_LINKS, standardOpenOption);
-    }
-
-    public static void writeAppendMode(@NonNull final Path path, @NonNull final byte[] content) throws IOException {
-        writeBytes(path, content, APPEND);
-    }
-
-    public static void writeTruncateMode(@NonNull final Path path, @NonNull final byte[] content) throws IOException {
-        writeBytes(path, content, TRUNCATE_EXISTING);
-    }
-
-    public static boolean writeIfNotExists(@NonNull final Path path, @NonNull final byte[] content) throws IOException {
-        if (!FilesHelper.exists(path)) {
-            FilesHelper.create(path);
-            writeAppendMode(path, content);
-            return (true);
-        }
-        return (false);
-    }
-
-    public static boolean writeIfIsEmpty(@NonNull final Path path, @NonNull final byte[] content) throws IOException {
-        if (FilesHelper.exists(path) && FilesHelper.isEmpty(path)) {
-            writeAppendMode(path, content);
-            return (true);
-        }
-        return (false);
+    public static void writeBytes(@NonNull final Path path, @NonNull byte[] content) throws IOException {
+        Files.write(path, content, NOFOLLOW_LINKS, TRUNCATE_EXISTING);
     }
 
     public static boolean writeIfNotExistsOrIsEmpty(@NonNull final Path path, @NonNull final byte[] content) throws IOException {
         if (!FilesHelper.exists(path)) {
             FilesHelper.create(path);
-            writeAppendMode(path, content);
+            writeBytes(path, content);
             return (true);
         }
         if (FilesHelper.isEmpty(path)) {
-            writeAppendMode(path, content);
+            writeBytes(path, content);
             return (true);
         }
         return (false);
