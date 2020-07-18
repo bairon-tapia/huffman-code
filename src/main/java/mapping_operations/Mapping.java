@@ -2,10 +2,7 @@ package mapping_operations;
 
 import static route_operations.RouteHelper.buildRoutes;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import lombok.NonNull;
@@ -22,38 +19,38 @@ public final class Mapping {
     }
 
     public static Map<Character, TreeNode<Character>> createMapCharacterAsKey(@NonNull final String string) {
-        final Map<Character, TreeNode<Character>> map = new HashMap<>();
+        final Map<Character, TreeNode<Character>> mapCharacterAsKey = new HashMap<>();
         final int n = string.length();
         for (int i = 0; i < n; i++) {
             final char character = string.charAt(i);
-            if (map.containsKey(character)) {
-                final TreeNode<Character> treeNode = map.get(character);
+            if (mapCharacterAsKey.containsKey(character)) {
+                final TreeNode<Character> treeNode = mapCharacterAsKey.get(character);
                 treeNode.updateFrequency();
             } else {
                 final TreeNode<Character> treeNode = new TreeNode<>(character);
-                map.put(character, treeNode);
+                mapCharacterAsKey.put(character, treeNode);
             }
         }
-        return (map);
+        return (Collections.unmodifiableMap(mapCharacterAsKey));
     }
 
     public static Map<String, TreeNode<Character>> createMapRouteAsKey(@NonNull final Map<Character,
             TreeNode<Character>> mapCharacterAsKey) {
-        return (mapCharacterAsKey
+        final Map<String, TreeNode<Character>> mapRouteAsKey = mapCharacterAsKey
                 .entrySet()
                 .stream()
-                .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue))
-        );
+                .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue));
+        return (Collections.unmodifiableMap(mapRouteAsKey));
     }
 
-    public static Map<String, TreeNode<Character>> filterRoutesByLength(@NonNull final Map<String,
-            TreeNode<Character>> mapCharacterAsKey) {
-        return (mapCharacterAsKey
+    public static Map<String, TreeNode<Character>> filterByRoutesLength(@NonNull final Map<String,
+            TreeNode<Character>> mapRouteAsKey) {
+        final Map<String, TreeNode<Character>> mapFilteredByRoutesLength = mapRouteAsKey
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().length() >= BYTE_LENGTH)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
-        );
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        return (Collections.unmodifiableMap(mapFilteredByRoutesLength));
     }
 
     public static PriorityQueue<TreeNode<Character>> createPriorityQueue(@NonNull final Map<Character,

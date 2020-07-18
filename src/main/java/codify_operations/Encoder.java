@@ -35,7 +35,7 @@ public final class Encoder {
         final TreeNode<Character> rootNode = Mapping.createHuffmanTree(priorityQueue);
         DisplayHelper.displayMapWithRoutes(charAsKey);
         final Map<String, TreeNode<Character>> routeAsKey = Mapping.createMapRouteAsKey(charAsKey);
-        final Map<String, TreeNode<Character>> filteredMap = Mapping.filterRoutesByLength(routeAsKey);
+        final Map<String, TreeNode<Character>> filteredMap = Mapping.filterByRoutesLength(routeAsKey);
         DisplayHelper.displayFilteredMap(filteredMap);
         final String encodedRoute = RouteHelper.encodeRoute(charAsKey, string);
         DisplayHelper.displayRoute(encodedRoute);
