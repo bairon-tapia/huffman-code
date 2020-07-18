@@ -1,8 +1,8 @@
 package string_operations;
 
-import lombok.NonNull;
-
 import java.util.List;
+
+import lombok.NonNull;
 
 public final class StringJoiner {
 

@@ -1,13 +1,14 @@
 package codify_operations;
 
-import display_operations.DisplayHelper;
+import java.util.List;
+
 import lombok.NonNull;
+
+import display_operations.DisplayHelper;
 import route_operations.RouteHelper;
 import string_operations.ByteToBitStringParser;
 import string_operations.StringJoiner;
 import tree_node.TreeNode;
-
-import java.util.List;
 
 public final class Decoder {
 

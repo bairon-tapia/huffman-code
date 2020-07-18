@@ -1,15 +1,16 @@
 package codify_operations;
 
+import java.io.IOException;
+import java.nio.file.Path;
+
+import lombok.NonNull;
+
 import file_operations.BinaryFilesHelper;
 import file_operations.FilesHelper;
 import file_operations.TextFileHelper;
 import input_operations.InputHelper;
-import lombok.NonNull;
 import readable_byte_size_operations.ReadableByteSizeHelper;
 import resources_path_operations.ResourcesPathHelper;
-
-import java.io.IOException;
-import java.nio.file.Path;
 
 public final class FilesHandler {
 

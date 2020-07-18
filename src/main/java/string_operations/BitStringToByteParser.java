@@ -1,10 +1,11 @@
 package string_operations;
 
-import com.google.common.primitives.Bytes;
-import lombok.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.NonNull;
+
+import com.google.common.primitives.Bytes;
 
 public final class BitStringToByteParser {
 

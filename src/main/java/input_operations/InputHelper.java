@@ -1,9 +1,9 @@
 package input_operations;
 
-import lombok.NonNull;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import lombok.NonNull;
 
 public final class InputHelper {
 

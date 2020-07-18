@@ -1,11 +1,11 @@
 package tree_node;
 
+import java.util.Objects;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-
-import java.util.Objects;
 
 public final class TreeNode<T extends Comparable<T>> {
 

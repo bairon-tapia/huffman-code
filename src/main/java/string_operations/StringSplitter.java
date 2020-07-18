@@ -1,9 +1,10 @@
 package string_operations;
 
-import com.google.common.base.Splitter;
+import java.util.List;
+
 import lombok.NonNull;
 
-import java.util.List;
+import com.google.common.base.Splitter;
 
 public final class StringSplitter {
 

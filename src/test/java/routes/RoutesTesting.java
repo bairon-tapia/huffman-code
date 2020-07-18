@@ -1,13 +1,14 @@
 package routes;
 
-import mapping_operations.Mapping;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import route_operations.RouteHelper;
-import tree_node.TreeNode;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import mapping_operations.Mapping;
+import route_operations.RouteHelper;
+import tree_node.TreeNode;
 
 class RoutesTesting {
 

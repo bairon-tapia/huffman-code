@@ -1,18 +1,19 @@
 package codify_operations;
 
-import display_operations.DisplayHelper;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+
+import display_operations.DisplayHelper;
 import mapping_operations.Mapping;
 import route_operations.RouteHelper;
 import string_operations.BitStringToByteParser;
 import string_operations.StringSplitter;
 import tree_node.TreeNode;
-
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
 
 public final class Encoder {
 

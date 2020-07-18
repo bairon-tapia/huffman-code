@@ -1,9 +1,9 @@
 package resources_path_operations;
 
-import lombok.NonNull;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import lombok.NonNull;
 
 public final class ResourcesPathHelper {
 
@@ -15,15 +15,8 @@ public final class ResourcesPathHelper {
     static {
         SEPARATOR = System.getProperty("file.separator");
         DIRECTORY_FOLDER = System.getProperty("user.dir");
-        FILE_FOLDER_RELATIVE_PATH = String.format(
-                "%s%s%s%s%s",
-                "src",
-                SEPARATOR, "main",
-                SEPARATOR, "resources");
-        FILE_FOLDER_ABSOLUTE_PATH = String.format(
-                "%s%s%s",
-                DIRECTORY_FOLDER,
-                SEPARATOR, FILE_FOLDER_RELATIVE_PATH);
+        FILE_FOLDER_RELATIVE_PATH = SEPARATOR + "main" + SEPARATOR + "resources";
+        FILE_FOLDER_ABSOLUTE_PATH = DIRECTORY_FOLDER + SEPARATOR + FILE_FOLDER_RELATIVE_PATH;
     }
 
     private ResourcesPathHelper() {

@@ -1,12 +1,13 @@
 package display_operations;
 
-import input_operations.InputHelper;
-import lombok.NonNull;
-import tree_node.TreeNode;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import lombok.NonNull;
+
+import input_operations.InputHelper;
+import tree_node.TreeNode;
 
 public final class DisplayHelper {
 
@@ -47,8 +48,8 @@ public final class DisplayHelper {
     public static void displayFilteredMap(@NonNull final Map<String, TreeNode<Character>> map) {
         System.out.println();
         System.out.println("Displaying all unique characters whose corresponding routes " +
-                "exceed the amount of digits of a byte (8), meaning the compression will be ineffective when handling" +
-                " these characters");
+                "are equal or greater than the amount of digits of a byte (8), meaning the compression will be " +
+                "ineffective when handling these characters");
         InputHelper.promptEnterKey();
         map.forEach((key, value) -> System.out.printf("%3c - %10d - %-50s%n", value.getElement(), value.getFrequency(),
                 key));

@@ -1,7 +1,6 @@
 package mapping_operations;
 
-import lombok.NonNull;
-import tree_node.TreeNode;
+import static route_operations.RouteHelper.buildRoutes;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -9,7 +8,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
-import static route_operations.RouteHelper.buildRoutes;
+import lombok.NonNull;
+
+import tree_node.TreeNode;
 
 public final class Mapping {
 

@@ -1,12 +1,13 @@
 package trees;
 
-import mapping_operations.Mapping;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import tree_node.TreeNode;
-
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import mapping_operations.Mapping;
+import tree_node.TreeNode;
 
 class TreeTesting {
 
