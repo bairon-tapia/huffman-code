@@ -15,7 +15,7 @@ public final class ResourcesPathHelper {
     static {
         SEPARATOR = System.getProperty("file.separator");
         DIRECTORY_FOLDER = System.getProperty("user.dir");
-        FILE_FOLDER_RELATIVE_PATH = SEPARATOR + "main" + SEPARATOR + "resources";
+        FILE_FOLDER_RELATIVE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "resources";
         FILE_FOLDER_ABSOLUTE_PATH = DIRECTORY_FOLDER + SEPARATOR + FILE_FOLDER_RELATIVE_PATH;
     }
 

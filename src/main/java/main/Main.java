@@ -8,6 +8,7 @@ import tree_node.TreeNode;
 public final class Main {
 
     public static void main(final String[] args) {
+        System.out.println(System.getProperty("user.dir"));
         FilesHandler.displayIntroduction();
         FilesHandler.setUpFiles();
         final Encoder encoder = new Encoder();
