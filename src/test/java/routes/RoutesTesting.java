@@ -12,18 +12,18 @@ import tree_node.TreeNode;
 
 class RoutesTesting {
 
-    private static final String DEFAULT_STRING = "This is a test!";
-    private static final Map<Character, TreeNode<Character>> CHAR_AS_KEY =
-            Mapping.createMapCharacterAsKey(DEFAULT_STRING);
-    private static final PriorityQueue<TreeNode<Character>> PRIORITY_QUEUE = Mapping.createPriorityQueue(CHAR_AS_KEY);
-    private static final TreeNode<Character> ROOT_NODE = Mapping.createHuffmanTree(PRIORITY_QUEUE);
-    private static final Map<String, TreeNode<Character>> ROUTE_AS_KEY = Mapping.createMapRouteAsKey(CHAR_AS_KEY);
-    private static final String ENCODED_ROUTE = RouteHelper.encodeRoute(CHAR_AS_KEY, DEFAULT_STRING);
+    private final String defaultString = "This is a test!";
+    private final Map<Character, TreeNode> mapCharacterAsKey =
+            Mapping.createMapCharacterAsKey(defaultString);
+    private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharacterAsKey);
+    private final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
+    private final Map<String, TreeNode> mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharacterAsKey);
+    private final String encodedRoute = RouteHelper.encodeRoute(mapCharacterAsKey, defaultString);
 
     @Test
     void areRoutesUnique() {
         final Set<String> routes = new HashSet<>();
-        for (Map.Entry<Character, TreeNode<Character>> entry : CHAR_AS_KEY.entrySet()) {
+        for (Map.Entry<Character, TreeNode> entry : mapCharacterAsKey.entrySet()) {
             final char character = entry.getKey();
             final String route = entry.getValue().getRoute();
             if (routes.contains(route)) {
@@ -37,23 +37,23 @@ class RoutesTesting {
 
     @Test
     void areRoutesEqual() {
-        if (CHAR_AS_KEY.size() != ROUTE_AS_KEY.size()) {
+        if (mapCharacterAsKey.size() != mapRouteAsKey.size()) {
             Assertions.fail("Error: The maps do not have the same amount of elements, thus it is not possible to " +
                     "assess whether they contain the same elements");
         }
-        final Map<Character, TreeNode<Character>> sortedCharAsKey = CHAR_AS_KEY
+        final Map<Character, TreeNode> sortedCharAsKey = mapCharacterAsKey
                 .entrySet()
                 .stream()
                 .sorted(Comparator.comparing(entry -> entry.getValue().getRoute()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
-        final Map<String, TreeNode<Character>> sortedRouteAsKey = new TreeMap<>(ROUTE_AS_KEY);
-        final Iterator<Map.Entry<Character, TreeNode<Character>>> iteratorCharAsKey =
+        final Map<String, TreeNode> sortedRouteAsKey = new TreeMap<>(mapRouteAsKey);
+        final Iterator<Map.Entry<Character, TreeNode>> iteratorCharAsKey =
                 sortedCharAsKey.entrySet().iterator();
-        final Iterator<Map.Entry<String, TreeNode<Character>>> iteratorRouteAsKey =
+        final Iterator<Map.Entry<String, TreeNode>> iteratorRouteAsKey =
                 sortedRouteAsKey.entrySet().iterator();
         while ((iteratorCharAsKey.hasNext()) || (iteratorRouteAsKey.hasNext())) {
-            final Map.Entry<Character, TreeNode<Character>> entryCharAsKey = iteratorCharAsKey.next();
-            final Map.Entry<String, TreeNode<Character>> entryRouteAsKey = iteratorRouteAsKey.next();
+            final Map.Entry<Character, TreeNode> entryCharAsKey = iteratorCharAsKey.next();
+            final Map.Entry<String, TreeNode> entryRouteAsKey = iteratorRouteAsKey.next();
             final char charOne = entryCharAsKey.getKey();
             final char charTwo = entryRouteAsKey.getValue().getElement();
             final String routeOne = entryCharAsKey.getValue().getRoute();
@@ -67,11 +67,11 @@ class RoutesTesting {
 
     @Test
     void areRoutesValid() {
-        TreeNode<Character> auxiliaryNode = ROOT_NODE;
-        final int n = ENCODED_ROUTE.length();
+        TreeNode auxiliaryNode = rootNode;
+        final int n = encodedRoute.length();
         int count = 0;
         for (int i = 0; i < n; i++) {
-            final char bitCharacter = ENCODED_ROUTE.charAt(i);
+            final char bitCharacter = encodedRoute.charAt(i);
             if (bitCharacter == '0') {
                 if (auxiliaryNode.getLeft() == null) {
                     Assertions.fail("Error: The encoded route indicates that the node: " + auxiliaryNode + " has a " +
@@ -90,13 +90,13 @@ class RoutesTesting {
             }
             if (auxiliaryNode.isLeaf()) {
                 final char character = auxiliaryNode.getElement();
-                final char comparisonCharacter = DEFAULT_STRING.charAt(count);
+                final char comparisonCharacter = defaultString.charAt(count);
                 if (character != comparisonCharacter) {
                     Assertions.fail("Error: Even though the route " + auxiliaryNode.getRoute() + " is valid, it " +
                             "should be associated to the character " + comparisonCharacter + ", and not to the " +
                             "character " + auxiliaryNode.getElement() + " as the encoded route indicates");
                 } else {
-                    auxiliaryNode = ROOT_NODE;
+                    auxiliaryNode = rootNode;
                     count++;
                 }
             }

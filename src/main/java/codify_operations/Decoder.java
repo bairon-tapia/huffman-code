@@ -12,7 +12,7 @@ import tree_node.TreeNode;
 
 public final class Decoder {
 
-    public Decoder(@NonNull final TreeNode<Character> rootNode, final int lastByteLength) {
+    public Decoder(@NonNull final TreeNode rootNode, final int lastByteLength) {
         final byte[] decodedBytes = FilesHandler.decode();
         DisplayHelper.displayBytes(decodedBytes);
         final List<String> decodedBitStrings = ByteToBitStringParser.toBitStrings(decodedBytes, lastByteLength);

@@ -11,7 +11,7 @@ public final class Main {
         FilesHandler.displayIntroduction();
         FilesHandler.setUpFiles();
         final Encoder encoder = new Encoder();
-        final TreeNode<Character> rootNode = encoder.getTreeNode();
+        final TreeNode rootNode = encoder.getTreeNode();
         final int lastByteLength = encoder.getLastByteLength();
         new Decoder(rootNode, lastByteLength);
         FilesHandler.displayFileSizes();

@@ -12,7 +12,7 @@ public final class RouteHelper {
         throw new UnsupportedOperationException();
     }
 
-    public static void buildRoutes(@NonNull final TreeNode<Character> treeNode, @NonNull final String route) {
+    public static void buildRoutes(@NonNull final TreeNode treeNode, @NonNull final String route) {
         if (treeNode.isLeaf()) {
             treeNode.setRoute(route);
             return;
@@ -21,7 +21,7 @@ public final class RouteHelper {
         buildRoutes(treeNode.getRight(), route + "1");
     }
 
-    public static String encodeRoute(@NonNull final Map<Character, TreeNode<Character>> map,
+    public static String encodeRoute(@NonNull final Map<Character, TreeNode> map,
                                      @NonNull final String fullString) {
         final StringBuilder completeRoute = new StringBuilder();
         final int n = fullString.length();
@@ -33,8 +33,8 @@ public final class RouteHelper {
         return (completeRoute.toString());
     }
 
-    public static String decodeRoute(@NonNull final TreeNode<Character> rootNode, @NonNull final String route) {
-        TreeNode<Character> auxiliaryNode = rootNode;
+    public static String decodeRoute(@NonNull final TreeNode rootNode, @NonNull final String route) {
+        TreeNode auxiliaryNode = rootNode;
         final StringBuilder stringBuilder = new StringBuilder();
         final int n = route.length();
         for (int i = 0; i < n; i++) {

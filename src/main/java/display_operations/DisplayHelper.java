@@ -25,7 +25,7 @@ public final class DisplayHelper {
         InputHelper.promptEnterKey();
     }
 
-    public static void displayMap(@NonNull final Map<Character, TreeNode<Character>> map) {
+    public static void displayMap(@NonNull final Map<Character, TreeNode> map) {
         System.out.println();
         System.out.println("Displaying map of all unique characters in string with their corresponding frequencies...");
         InputHelper.promptEnterKey();
@@ -34,7 +34,7 @@ public final class DisplayHelper {
         InputHelper.promptEnterKey();
     }
 
-    public static void displayMapWithRoutes(@NonNull final Map<Character, TreeNode<Character>> map) {
+    public static void displayMapWithRoutes(@NonNull final Map<Character, TreeNode> map) {
         System.out.println();
         System.out.println("Displaying map of all unique characters in string with their corresponding frequencies " +
                 "and routes...");
@@ -45,7 +45,7 @@ public final class DisplayHelper {
         InputHelper.promptEnterKey();
     }
 
-    public static void displayFilteredMap(@NonNull final Map<String, TreeNode<Character>> map) {
+    public static void displayFilteredMap(@NonNull final Map<String, TreeNode> map) {
         System.out.println();
         System.out.println("Displaying all unique characters whose corresponding routes " +
                 "are equal or greater than the amount of digits of a byte (8), meaning the compression will be " +

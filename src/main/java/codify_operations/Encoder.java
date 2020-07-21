@@ -21,7 +21,7 @@ public final class Encoder {
 
     @Getter
     @Setter(AccessLevel.PROTECTED)
-    private TreeNode<Character> treeNode;
+    private TreeNode treeNode;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     private int lastByteLength;
@@ -29,13 +29,13 @@ public final class Encoder {
     public Encoder() {
         final String string = FilesHandler.readString();
         DisplayHelper.displayString(string);
-        final Map<Character, TreeNode<Character>> charAsKey = Mapping.createMapCharacterAsKey(string);
+        final Map<Character, TreeNode> charAsKey = Mapping.createMapCharacterAsKey(string);
         DisplayHelper.displayMap(charAsKey);
-        final PriorityQueue<TreeNode<Character>> priorityQueue = Mapping.createPriorityQueue(charAsKey);
-        final TreeNode<Character> rootNode = Mapping.createHuffmanTree(priorityQueue);
+        final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(charAsKey);
+        final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
         DisplayHelper.displayMapWithRoutes(charAsKey);
-        final Map<String, TreeNode<Character>> routeAsKey = Mapping.createMapRouteAsKey(charAsKey);
-        final Map<String, TreeNode<Character>> filteredMap = Mapping.filterByRoutesLength(routeAsKey);
+        final Map<String, TreeNode> routeAsKey = Mapping.createMapRouteAsKey(charAsKey);
+        final Map<String, TreeNode> filteredMap = Mapping.filterByRoutesLength(routeAsKey);
         DisplayHelper.displayFilteredMap(filteredMap);
         final String encodedRoute = RouteHelper.encodeRoute(charAsKey, string);
         DisplayHelper.displayRoute(encodedRoute);
