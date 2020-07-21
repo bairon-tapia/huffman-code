@@ -1,10 +1,11 @@
 package display_operations;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import lombok.NonNull;
+
+import com.google.common.io.BaseEncoding;
 
 import input_operations.InputHelper;
 import tree_node.TreeNode;
@@ -83,11 +84,15 @@ public final class DisplayHelper {
 
     public static void displayBytes(@NonNull final byte[] bytes) {
         System.out.println();
-        final boolean booleanValue = InputHelper.getConfirmation("Do you wish to display the bytes as integers?");
+        final boolean booleanValue = InputHelper.getConfirmation("Do you wish to display the bytes as hexadecimals?");
         System.out.println();
         if (booleanValue) {
-            System.out.println("Displaying the bytes as integers...");
-            System.out.println(Arrays.toString(bytes));
+            System.out.println("Displaying the bytes as hexadecimals...");
+            System.out.println("[" + BaseEncoding
+                    .base16()
+                    .upperCase()
+                    .withSeparator(", ", 2)
+                    .encode(bytes) + "]");
             System.out.println();
             InputHelper.promptEnterKey();
         }

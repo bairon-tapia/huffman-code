@@ -10,7 +10,7 @@ import file_operations.FilesHelper;
 import file_operations.TextFileHelper;
 import input_operations.InputHelper;
 import readable_byte_size_operations.ReadableByteSizeHelper;
-import resources_path_operations.ResourcesPathHelper;
+import resources_path_operations.PathHelper;
 
 public final class FilesHandler {
 
@@ -75,9 +75,9 @@ public final class FilesHandler {
                 "\n" +
                 "Aunque éste sea el último dolor que ella me causa,\n" +
                 "y estos sean los últimos versos que yo le escribo.";
-        INPUT_FILE_PATH = ResourcesPathHelper.getRelativePath(INPUT_FILE_NAME);
-        BINARY_FILE_PATH = ResourcesPathHelper.getRelativePath(BINARY_FILE_NAME);
-        OUTPUT_FILE_PATH = ResourcesPathHelper.getRelativePath(OUTPUT_FILE_NAME);
+        INPUT_FILE_PATH = PathHelper.resolveDirectory(INPUT_FILE_NAME);
+        BINARY_FILE_PATH = PathHelper.resolveDirectory(BINARY_FILE_NAME);
+        OUTPUT_FILE_PATH = PathHelper.resolveDirectory(OUTPUT_FILE_NAME);
     }
 
     private FilesHandler() {

@@ -45,8 +45,8 @@ public final class Mapping {
         final Map<String, TreeNode> mapRouteAsKey = mapCharacterAsKey
                 .entrySet()
                 .stream()
-                .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue, (oldValue,
-                                                                                                      newValue) -> newValue, LinkedHashMap::new));
+                .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue,
+                        (oldValue, newValue) -> newValue, LinkedHashMap::new));
         return (Collections.unmodifiableMap(mapRouteAsKey));
     }
 
@@ -56,9 +56,8 @@ public final class Mapping {
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().length() >= BYTE_LENGTH)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue,
-                                                                                   newValue) -> newValue,
-                        LinkedHashMap::new));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> newValue, LinkedHashMap::new));
         return (Collections.unmodifiableMap(mapFilteredByRoutesLength));
     }
 

@@ -27,8 +27,6 @@ j
 :src/main/java/string_operations/ByteToBitStringParser.java,a\1\a1f7b4be8a7a36d1226d7a9de1437fece70a5ad6
 c
 3src/main/java/display_operations/DisplayHelper.java,6\a\6a309e23b4077def5b401c9b059b87453663ad4b
-p
-@src/main/java/resources_path_operations/ResourcesPathHelper.java,e\d\ed9c8700708f482352606e1d2bb8b04cdb9a583f
 w
 Gsrc/main/java/readable_byte_size_operations/ReadableByteSizeHelper.java,3\c\3cea9e8f1ec6bb4a518cd1d3ad18b07db534b2d4
 @
@@ -52,3 +50,8 @@ W
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 Y
 )src/main/java/tree_node/AbstractNode.java,b\9\b961ce2be3fbf708485c6947a8665db89e23b1aa
+g
+7src/main/java/resources_path_operations/PathHelper.java,f\1\f13fc7c9b53a8d5af371f58170f5001e4e411dc1
+:
+
+.classpath,3\5\354079a72b91a4280407c16a36f47d1986fd85a5
