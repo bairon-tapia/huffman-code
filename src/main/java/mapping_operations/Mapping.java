@@ -31,7 +31,13 @@ public final class Mapping {
                 mapCharacterAsKey.put(character, treeNode);
             }
         }
-        return (Collections.unmodifiableMap(mapCharacterAsKey));
+        final Map<Character, TreeNode> sortedMap = mapCharacterAsKey
+                .entrySet()
+                .stream()
+                .sorted(Comparator.comparingInt(e -> e.getValue().getFrequency()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> newValue,
+                        LinkedHashMap::new));
+        return (Collections.unmodifiableMap(sortedMap));
     }
 
     public static Map<String, TreeNode> createMapRouteAsKey(@NonNull final Map<Character,
@@ -39,7 +45,8 @@ public final class Mapping {
         final Map<String, TreeNode> mapRouteAsKey = mapCharacterAsKey
                 .entrySet()
                 .stream()
-                .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue));
+                .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue, (oldValue,
+                                                                                                      newValue) -> newValue, LinkedHashMap::new));
         return (Collections.unmodifiableMap(mapRouteAsKey));
     }
 
@@ -49,7 +56,9 @@ public final class Mapping {
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().length() >= BYTE_LENGTH)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue,
+                                                                                   newValue) -> newValue,
+                        LinkedHashMap::new));
         return (Collections.unmodifiableMap(mapFilteredByRoutesLength));
     }
 
