@@ -1,6 +1,6 @@
 package mapping_operations;
 
-import static route_operations.RouteHelper.buildRoutes;
+import static tree_node.TreeNode.buildRoutes;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,7 +34,7 @@ public final class Mapping {
         final Map<Character, TreeNode> sortedMap = mapCharacterAsKey
                 .entrySet()
                 .stream()
-                .sorted(Comparator.comparingInt(e -> e.getValue().getFrequency()))
+                .sorted(Map.Entry.<Character, TreeNode>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> newValue,
                         LinkedHashMap::new));
         return (Collections.unmodifiableMap(sortedMap));
@@ -78,7 +78,7 @@ public final class Mapping {
             priorityQueue.add(parentNode);
         }
         final TreeNode rootNode = priorityQueue.remove();
-        buildRoutes(rootNode, "");
+        buildRoutes("", rootNode);
         return (rootNode);
     }
 }

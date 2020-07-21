@@ -30,7 +30,7 @@ public final class DisplayHelper {
         System.out.println();
         System.out.println("Displaying map of all unique characters in string with their corresponding frequencies...");
         InputHelper.promptEnterKey();
-        map.forEach((key, value) -> System.out.printf("%3c - %10d%n", key, value.getFrequency()));
+        map.forEach((key, value) -> System.out.println(value));
         System.out.println();
         InputHelper.promptEnterKey();
     }
@@ -40,8 +40,7 @@ public final class DisplayHelper {
         System.out.println("Displaying map of all unique characters in string with their corresponding frequencies " +
                 "and routes...");
         InputHelper.promptEnterKey();
-        map.forEach((key, value) -> System.out.printf("%3c - %10d - %-50s%n", key, value.getFrequency(),
-                value.getRoute()));
+        map.forEach((key, value) -> System.out.println(value));
         System.out.println();
         InputHelper.promptEnterKey();
     }
@@ -50,10 +49,18 @@ public final class DisplayHelper {
         System.out.println();
         System.out.println("Displaying all unique characters whose corresponding routes " +
                 "are equal or greater than the amount of digits of a byte (8), meaning the compression will be " +
-                "ineffective when handling these characters");
+                "ineffective when handling these characters.");
         InputHelper.promptEnterKey();
-        map.forEach((key, value) -> System.out.printf("%3c - %10d - %-50s%n", value.getElement(), value.getFrequency(),
-                key));
+        map.forEach((key, value) -> System.out.println(value));
+        System.out.println();
+        InputHelper.promptEnterKey();
+    }
+
+    public static void displayHuffmanTree(@NonNull final TreeNode treeNode) {
+        System.out.println();
+        System.out.println("Displaying the huffman tree...");
+        InputHelper.promptEnterKey();
+        System.out.println(TreeNode.traversal(treeNode));
         System.out.println();
         InputHelper.promptEnterKey();
     }

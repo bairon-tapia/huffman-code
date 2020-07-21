@@ -33,6 +33,7 @@ public final class Encoder {
         DisplayHelper.displayMap(charAsKey);
         final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(charAsKey);
         final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
+        DisplayHelper.displayHuffmanTree(rootNode);
         DisplayHelper.displayMapWithRoutes(charAsKey);
         final Map<String, TreeNode> routeAsKey = Mapping.createMapRouteAsKey(charAsKey);
         final Map<String, TreeNode> filteredMap = Mapping.filterByRoutesLength(routeAsKey);

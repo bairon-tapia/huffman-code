@@ -12,15 +12,6 @@ public final class RouteHelper {
         throw new UnsupportedOperationException();
     }
 
-    public static void buildRoutes(@NonNull final TreeNode treeNode, @NonNull final String route) {
-        if (treeNode.isLeaf()) {
-            treeNode.setRoute(route);
-            return;
-        }
-        buildRoutes(treeNode.getLeft(), route + "0");
-        buildRoutes(treeNode.getRight(), route + "1");
-    }
-
     public static String encodeRoute(@NonNull final Map<Character, TreeNode> map,
                                      @NonNull final String fullString) {
         final StringBuilder completeRoute = new StringBuilder();
