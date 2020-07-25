@@ -75,9 +75,9 @@ public final class FilesHandler {
                 "\n" +
                 "Aunque éste sea el último dolor que ella me causa,\n" +
                 "y estos sean los últimos versos que yo le escribo.";
-        INPUT_FILE_PATH = PathHelper.resolveDirectoryFolder(INPUT_FILE_NAME);
-        BINARY_FILE_PATH = PathHelper.resolveDirectoryFolder(BINARY_FILE_NAME);
-        OUTPUT_FILE_PATH = PathHelper.resolveDirectoryFolder(OUTPUT_FILE_NAME);
+        INPUT_FILE_PATH = PathHelper.resolveWorkingDirectory(INPUT_FILE_NAME);
+        BINARY_FILE_PATH = PathHelper.resolveWorkingDirectory(BINARY_FILE_NAME);
+        OUTPUT_FILE_PATH = PathHelper.resolveWorkingDirectory(OUTPUT_FILE_NAME);
     }
 
     private FilesHandler() {

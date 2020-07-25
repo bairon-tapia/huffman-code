@@ -46,7 +46,7 @@ public final class PathHelper {
         return (Paths.get(absolutePath));
     }
 
-    public static Path resolveDirectoryFolder(@NonNull final String fileName) {
+    public static Path resolveWorkingDirectory(@NonNull final String fileName) {
         final Path path = getAbsoluteResourcesPath(fileName);
         if (!Files.exists(path)) {
             return (Paths.get(getDirectoryFolderPath(fileName)));
