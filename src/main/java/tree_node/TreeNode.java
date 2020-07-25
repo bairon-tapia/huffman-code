@@ -107,7 +107,7 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
 
     @Override
     public int hashCode() {
-        return (Objects.hash(element, frequency));
+        return (Objects.hash(element, frequency, route));
     }
 
     @Override
