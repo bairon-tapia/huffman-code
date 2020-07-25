@@ -8,6 +8,4 @@ public interface AbstractNode<T extends Comparable<T>> {
 
     AbstractNode<T> getRight();
 
-    int getFrequency();
-
 }
