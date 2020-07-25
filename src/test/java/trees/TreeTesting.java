@@ -12,10 +12,10 @@ import tree_node.TreeNode;
 class TreeTesting {
 
     private static final char DEFAULT_CHARACTER = '\u0000';
+    private static final String DEFAULT_STRING = "This is a test!";
 
-    private final String defaultString = "This is a test!";
     private final Map<Character, TreeNode> mapCharacterAsKey =
-            Mapping.createMapCharacterAsKey(defaultString);
+            Mapping.createMapCharacterAsKey(DEFAULT_STRING);
     private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharacterAsKey);
     private final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
 
@@ -30,6 +30,24 @@ class TreeTesting {
             return (isFullTree(rootNode.getLeft()) && isFullTree(rootNode.getRight()));
         }
         return (false);
+    }
+
+    static boolean isSumTree(final TreeNode rootNode) {
+        int leftFrequency = 0;
+        int rightFrequency = 0;
+        if (rootNode == null || rootNode.isLeaf()) {
+            return (true);
+        } else {
+            if (rootNode.getLeft() != null) {
+                leftFrequency = rootNode.getLeft().getFrequency();
+            }
+            if (rootNode.getRight() != null) {
+                rightFrequency = rootNode.getRight().getFrequency();
+            }
+            return (rootNode.getFrequency() == leftFrequency + rightFrequency)
+                    && (isSumTree(rootNode.getLeft()))
+                    && (isSumTree(rootNode.getRight()));
+        }
     }
 
     static boolean internalNodesContainValues(final TreeNode rootNode) {
@@ -52,28 +70,13 @@ class TreeTesting {
         return (leafNodesContainValues(rootNode.getLeft()) && leafNodesContainValues(rootNode.getRight()));
     }
 
-    static boolean isSumTree(final TreeNode rootNode) {
-        int leftFrequency = 0;
-        int rightFrequency = 0;
-        if (rootNode == null || rootNode.isLeaf()) {
-            return (true);
-        } else {
-            if (rootNode.getLeft() != null) {
-                leftFrequency = rootNode.getLeft().getFrequency();
-            }
-            if (rootNode.getRight() != null) {
-                rightFrequency = rootNode.getRight().getFrequency();
-            }
-            return (rootNode.getFrequency() == leftFrequency + rightFrequency)
-                    && (isSumTree(rootNode.getLeft()))
-                    && (isSumTree(rootNode.getRight()));
-        }
-    }
-
     @Test
     void isValidHuffmanTree() {
         if (!isFullTree(rootNode)) {
             Assertions.fail("ERROR: The tree is not a huffman tree because it isn't a full tree");
+        }
+        if (!isSumTree(rootNode)) {
+            Assertions.fail("ERROR: The tree is not a huffman tree it isn't a sum tree.");
         }
         if (internalNodesContainValues(rootNode)) {
             Assertions.fail("ERROR: The tree is not a huffman tree because at least one of its internal nodes stores " +
@@ -82,9 +85,6 @@ class TreeTesting {
         if (!leafNodesContainValues(rootNode)) {
             Assertions.fail("ERROR: The tree is not a huffman tree because at least one of its leaf nodes doesn't " +
                     "store information (contains a null character).");
-        }
-        if (!isSumTree(rootNode)) {
-            Assertions.fail("ERROR: The tree is not a huffman tree it isn't a sum tree.");
         }
     }
 

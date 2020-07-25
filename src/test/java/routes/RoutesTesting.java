@@ -12,13 +12,14 @@ import tree_node.TreeNode;
 
 class RoutesTesting {
 
-    private final String defaultString = "This is a test!";
+    private static final String DEFAULT_STRING = "This is a test!";
+
     private final Map<Character, TreeNode> mapCharacterAsKey =
-            Mapping.createMapCharacterAsKey(defaultString);
+            Mapping.createMapCharacterAsKey(DEFAULT_STRING);
     private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharacterAsKey);
     private final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
     private final Map<String, TreeNode> mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharacterAsKey);
-    private final String encodedRoute = RouteHelper.encodeRoute(mapCharacterAsKey, defaultString);
+    private final String encodedRoute = RouteHelper.encodeRoute(mapCharacterAsKey, DEFAULT_STRING);
 
     @Test
     void areRoutesUnique() {
@@ -90,7 +91,7 @@ class RoutesTesting {
             }
             if (auxiliaryNode.isLeaf()) {
                 final char character = auxiliaryNode.getElement();
-                final char comparisonCharacter = defaultString.charAt(count);
+                final char comparisonCharacter = DEFAULT_STRING.charAt(count);
                 if (character != comparisonCharacter) {
                     Assertions.fail("Error: Even though the route " + auxiliaryNode.getRoute() + " is valid, it " +
                             "should be associated to the character " + comparisonCharacter + ", and not to the " +
