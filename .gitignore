@@ -179,9 +179,6 @@ hs_err_pid*
 # IntelliJ
 .idea/ZeppelinRemoteNotebooks/
 
-#Eclipse
-*.project
-
 #Files created by the Algorithm
 src/main/resources/Output.bin
 src/main/resources/Output.txt
