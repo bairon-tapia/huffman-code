@@ -177,7 +177,7 @@ hs_err_pid*
 
 ##Added by me
 # IntelliJ
-.idea/ZeppelinRemoteNotebooks/
+.idea/
 
 #Files created by the Algorithm
 src/main/resources/Output.bin
