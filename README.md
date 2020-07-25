@@ -8,7 +8,7 @@ Logic of the program is as follows:
 1. It will look for an input file named "Input.txt" in the resources folder. If it does not exist, it will create one for you, containing [Pablo Neruda's Poema XX](https://bit.ly/2WeUXjl).
     - The project already supplies a file by default. A mere test file.
     - The project is bundled with several example files that might be of interest to you. Check [NOTES.md](src/main/resources/Example%20files/NOTES.md) for more details.
-    - Obviously, if you wish to see how the program compresses a certain text, you'll have to provide it yourself. All you would need to do in such case is to rename the file to "Input.txt" and replace it for the already existing file with such name in the resources folder.
+    - Obviously, if you wish to see how the program compresses an specific text, you'll have to provide it yourself. All you would need to do in such case is to rename your text file to "Input.txt" and replace it for [the already existing file with such name](src/main/resources/Input.txt) in the resources folder.
 2. It will show you the file's content on the console. Although long texts are useful for running compression benchmarks, they won't be shown quite well on console, and they will make it considerably harder to inspect how the program generated the routes for each one of its characters, so keep that in mind.
 3. It will map each of the characters contained in the original text along with their corresponding frequencies and routes.
 4. It will generate an appended route (a string), which contains each of the characters' generated routes in the order in which they appeared in the original text.
