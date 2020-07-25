@@ -46,6 +46,9 @@ public final class DisplayHelper {
     }
 
     public static void displayFilteredMap(@NonNull final Map<String, TreeNode> map) {
+        if (map.isEmpty()) {
+            return;
+        }
         System.out.println();
         System.out.println("Displaying all unique characters whose corresponding routes " +
                 "are equal or greater than the amount of digits of a byte (8), meaning the compression will be " +
