@@ -100,9 +100,22 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
 
     @Override
     public int compareTo(final TreeNode treeNode) {
-        final int leftValue = this.frequency;
-        final int rightValue = treeNode.frequency;
-        return (Integer.compare(leftValue, rightValue));
+        final int leftFrequency = this.frequency;
+        final int rightFrequency = treeNode.frequency;
+        if (leftFrequency != rightFrequency) {
+            return (Integer.compare(leftFrequency, rightFrequency));
+        }
+        final int leftRouteLength = this.route.length();
+        final int rightRouteLength = treeNode.route.length();
+        if ((leftRouteLength == 0) && (rightRouteLength == 0)) {
+            return (0);
+        }
+        if (leftRouteLength != rightRouteLength) {
+            return (Integer.compare(leftRouteLength, rightRouteLength));
+        }
+        final int leftRouteValue = Integer.parseInt(this.route, 2);
+        final int rightRouteValue = Integer.parseInt(treeNode.route, 2);
+        return (Integer.compare(leftRouteValue, rightRouteValue));
     }
 
     @Override

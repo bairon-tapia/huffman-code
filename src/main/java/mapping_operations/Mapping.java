@@ -35,7 +35,7 @@ public final class Mapping {
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.<Character, TreeNode>comparingByValue().reversed())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> newValue,
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue,
                         LinkedHashMap::new));
         return (Collections.unmodifiableMap(sortedMap));
     }
@@ -46,7 +46,7 @@ public final class Mapping {
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue,
-                        (oldValue, newValue) -> newValue, LinkedHashMap::new));
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
         return (Collections.unmodifiableMap(mapRouteAsKey));
     }
 
@@ -57,7 +57,7 @@ public final class Mapping {
                 .stream()
                 .filter(entry -> entry.getKey().length() >= BYTE_LENGTH)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                        (oldValue, newValue) -> newValue, LinkedHashMap::new));
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
         return (Collections.unmodifiableMap(mapFilteredByRoutesLength));
     }
 

@@ -26,55 +26,8 @@ public final class FilesHandler {
         INPUT_FILE_NAME = "Input.txt";
         BINARY_FILE_NAME = "Output.bin";
         OUTPUT_FILE_NAME = "Output.txt";
-        DEFAULT_STRING = "Poema XX.\n" +
-                "Puedo escribir los versos más tristes esta noche.\n" +
-                "\n" +
-                "Escribir, por ejemplo: \"La noche está estrellada,\n" +
-                "y tiritan, azules, los astros, a lo lejos.\"\n" +
-                "\n" +
-                "El viento de la noche gira en el cielo y canta.\n" +
-                "\n" +
-                "Puedo escribir los versos más tristes esta noche.\n" +
-                "Yo la quise, y a veces ella también me quiso.\n" +
-                "\n" +
-                "En las noches como ésta la tuve entre mis brazos.\n" +
-                "La besé tantas veces bajo el cielo infinito.\n" +
-                "\n" +
-                "Ella me quiso, a veces yo también la quería.\n" +
-                "Cómo no haber amado sus grandes ojos fijos.\n" +
-                "\n" +
-                "Puedo escribir los versos más tristes esta noche.\n" +
-                "Pensar que no la tengo. Sentir que la he perdido.\n" +
-                "\n" +
-                "Oir la noche inmensa, más inmensa sin ella.\n" +
-                "Y el verso cae al alma como al pasto el rocío.\n" +
-                "\n" +
-                "Qué importa que mi amor no pudiera guardarla.\n" +
-                "La noche está estrellada y ella no está conmigo.\n" +
-                "\n" +
-                "Eso es todo. A lo lejos alguien canta. A lo lejos.\n" +
-                "Mi alma no se contenta con haberla perdido.\n" +
-                "\n" +
-                "Como para acercarla mi mirada la busca.\n" +
-                "Mi corazón la busca, y ella no está conmigo.\n" +
-                "\n" +
-                "La misma noche que hace blanquear los mismos árboles.\n" +
-                "Nosotros, los de entonces, ya no somos los mismos.\n" +
-                "\n" +
-                "Ya no la quiero, es cierto, pero cuánto la quise.\n" +
-                "Mi voz buscaba el viento para tocar su oído.\n" +
-                "\n" +
-                "De otro. Será de otro. Como antes de mis besos.\n" +
-                "Su voz, su cuerpo claro. Sus ojos infinitos.\n" +
-                "\n" +
-                "Ya no la quiero, es cierto, pero tal vez la quiero.\n" +
-                "Es tan corto el amor, y es tan largo el olvido.\n" +
-                "\n" +
-                "Porque en noches como ésta la tuve entre mis brazos,\n" +
-                "mi alma no se contenta con haberla perdido.\n" +
-                "\n" +
-                "Aunque éste sea el último dolor que ella me causa,\n" +
-                "y estos sean los últimos versos que yo le escribo.";
+        DEFAULT_STRING = "This is a file for test purposes. See src/java/resources/example files to see how the " +
+                "program handles the compression/decompression of other files.";
         INPUT_FILE_PATH = PathHelper.resolveWorkingDirectory(INPUT_FILE_NAME);
         BINARY_FILE_PATH = PathHelper.resolveWorkingDirectory(BINARY_FILE_NAME);
         OUTPUT_FILE_PATH = PathHelper.resolveWorkingDirectory(OUTPUT_FILE_NAME);
