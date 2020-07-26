@@ -1,7 +1,9 @@
 package routes;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,17 +16,17 @@ class RoutesTesting {
 
     private static final String DEFAULT_STRING = "This is a test!";
 
-    private final Map<Character, TreeNode> mapCharacterAsKey =
+    private final Map<Character, TreeNode> mapCharAsKey =
             Mapping.createMapCharAsKey(DEFAULT_STRING);
-    private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharacterAsKey);
+    private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
     private final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
-    private final Map<String, TreeNode> mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharacterAsKey);
-    private final String encodedRoute = RouteHelper.encodeRoute(mapCharacterAsKey, DEFAULT_STRING);
+    private final Map<String, TreeNode> mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharAsKey);
+    private final String encodedRoute = RouteHelper.encodeRoute(mapCharAsKey, DEFAULT_STRING);
 
     @Test
     void areRoutesUnique() {
-        final Set<String> routes = new HashSet<>();
-        for (Map.Entry<Character, TreeNode> entry : mapCharacterAsKey.entrySet()) {
+        final var routes = new HashSet<String>();
+        for (Map.Entry<Character, TreeNode> entry : mapCharAsKey.entrySet()) {
             final char character = entry.getKey();
             final String route = entry.getValue().getRoute();
             if (routes.contains(route)) {
@@ -38,23 +40,17 @@ class RoutesTesting {
 
     @Test
     void areRoutesEqual() {
-        if (mapCharacterAsKey.size() != mapRouteAsKey.size()) {
+        if (mapCharAsKey.size() != mapRouteAsKey.size()) {
             Assertions.fail("Error: The maps do not have the same amount of elements, thus it is not possible to " +
                     "assess whether they contain the same elements");
         }
-        final Map<Character, TreeNode> sortedCharAsKey = mapCharacterAsKey
-                .entrySet()
-                .stream()
-                .sorted(Comparator.comparing(entry -> entry.getValue().getRoute()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
-        final Map<String, TreeNode> sortedRouteAsKey = new TreeMap<>(mapRouteAsKey);
-        final Iterator<Map.Entry<Character, TreeNode>> iteratorCharAsKey =
-                sortedCharAsKey.entrySet().iterator();
-        final Iterator<Map.Entry<String, TreeNode>> iteratorRouteAsKey =
-                sortedRouteAsKey.entrySet().iterator();
+        final var sortedCharAsKey = Mapping.createSortedMapRouteAsKey(mapCharAsKey);
+        final var sortedRouteAsKey = new TreeMap<>(mapRouteAsKey);
+        final var iteratorCharAsKey = sortedCharAsKey.entrySet().iterator();
+        final var iteratorRouteAsKey = sortedRouteAsKey.entrySet().iterator();
         while ((iteratorCharAsKey.hasNext()) || (iteratorRouteAsKey.hasNext())) {
-            final Map.Entry<Character, TreeNode> entryCharAsKey = iteratorCharAsKey.next();
-            final Map.Entry<String, TreeNode> entryRouteAsKey = iteratorRouteAsKey.next();
+            final var entryCharAsKey = iteratorCharAsKey.next();
+            final var entryRouteAsKey = iteratorRouteAsKey.next();
             final char charOne = entryCharAsKey.getKey();
             final char charTwo = entryRouteAsKey.getValue().getElement();
             final String routeOne = entryCharAsKey.getValue().getRoute();

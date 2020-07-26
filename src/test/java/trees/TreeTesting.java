@@ -14,9 +14,8 @@ class TreeTesting {
     private static final char DEFAULT_CHARACTER = '\u0000';
     private static final String DEFAULT_STRING = "This is a test!";
 
-    private final Map<Character, TreeNode> mapCharacterAsKey =
-            Mapping.createMapCharAsKey(DEFAULT_STRING);
-    private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharacterAsKey);
+    private final Map<Character, TreeNode> mapCharAsKey = Mapping.createMapCharAsKey(DEFAULT_STRING);
+    private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
     private final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
 
     static boolean isFullTree(final TreeNode rootNode) {

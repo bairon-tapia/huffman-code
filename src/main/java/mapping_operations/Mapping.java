@@ -18,57 +18,67 @@ public final class Mapping {
         throw new UnsupportedOperationException();
     }
 
-    public static Map<Character, TreeNode> createSortedMapCharAsKey(@NonNull final Map<Character, TreeNode> mapCharacterAsKey) {
-        return (mapCharacterAsKey
+    public static Map<Character, TreeNode> createSortedMapCharAsKey(@NonNull final Map<Character, TreeNode> mapCharAsKey) {
+        final var sortedMap = mapCharAsKey
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.<Character, TreeNode>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue,
-                        LinkedHashMap::new)));
+                        LinkedHashMap::new));
+        return (Collections.unmodifiableMap(sortedMap));
+    }
+
+    public static Map<Character, TreeNode> createSortedMapRouteAsKey(final @NonNull Map<Character, TreeNode> mapCharAsKey) {
+        final var sortedMap = mapCharAsKey
+                .entrySet()
+                .stream()
+                .sorted(Comparator.comparing(entry -> entry.getValue().getRoute()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new));
+        return (Collections.unmodifiableMap(sortedMap));
     }
 
     public static Map<Character, TreeNode> createMapCharAsKey(@NonNull final String string) {
-        final Map<Character, TreeNode> mapCharacterAsKey = new HashMap<>();
+        final var mapCharAsKey = new HashMap<Character, TreeNode>();
         final int n = string.length();
         for (int i = 0; i < n; i++) {
             final char character = string.charAt(i);
-            if (mapCharacterAsKey.containsKey(character)) {
-                final TreeNode treeNode = mapCharacterAsKey.get(character);
+            if (mapCharAsKey.containsKey(character)) {
+                final TreeNode treeNode = mapCharAsKey.get(character);
                 treeNode.updateFrequency();
             } else {
                 final TreeNode treeNode = new TreeNode(character);
-                mapCharacterAsKey.put(character, treeNode);
+                mapCharAsKey.put(character, treeNode);
             }
         }
-        return (createSortedMapCharAsKey(mapCharacterAsKey));
+        return (createSortedMapCharAsKey(mapCharAsKey));
     }
 
     public static Map<String, TreeNode> createMapRouteAsKey(@NonNull final Map<Character,
-            TreeNode> mapCharacterAsKey) {
-        return (mapCharacterAsKey
+            TreeNode> mapCharAsKey) {
+        final var mapRouteAsKey = mapCharAsKey
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(entry -> entry.getValue().getRoute(), Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new))
-        );
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        return (Collections.unmodifiableMap(mapRouteAsKey));
     }
 
     public static Map<String, TreeNode> createMapFilteredByRoutes(@NonNull final Map<String,
             TreeNode> mapRouteAsKey) {
-        return (mapRouteAsKey
+        final var filteredMap = mapRouteAsKey
                 .entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().length() >= BYTE_LENGTH)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new))
-        );
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new));
+        return (Collections.unmodifiableMap(filteredMap));
     }
 
     public static PriorityQueue<TreeNode> createPriorityQueue(@NonNull final Map<Character,
-            TreeNode> mapCharacterAsKey) {
-        final PriorityQueue<TreeNode> priorityQueue =
-                new PriorityQueue<>(Comparator.comparing(TreeNode::getFrequency));
-        priorityQueue.addAll(mapCharacterAsKey.values());
+            TreeNode> mapCharAsKey) {
+        final var priorityQueue = new PriorityQueue<>(Comparator.comparing(TreeNode::getFrequency));
+        priorityQueue.addAll(mapCharAsKey.values());
         return (priorityQueue);
     }
 
@@ -84,4 +94,5 @@ public final class Mapping {
         buildRoutes("", rootNode);
         return (rootNode);
     }
+
 }

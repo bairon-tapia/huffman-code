@@ -1,8 +1,6 @@
 package codify_operations;
 
 import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -29,17 +27,17 @@ public final class Encoder {
     public Encoder() {
         final String string = FilesHandler.readString();
         DisplayHelper.displayString(string);
-        final Map<Character, TreeNode> charAsKey = Mapping.createMapCharAsKey(string);
-        DisplayHelper.displayMap(charAsKey);
-        final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(charAsKey);
+        final var mapCharAsKey = Mapping.createMapCharAsKey(string);
+        DisplayHelper.displayMap(mapCharAsKey);
+        final var priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
         final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
         DisplayHelper.displayHuffmanTree(rootNode);
-        final Map<Character, TreeNode> sortedCharAsKey = Mapping.createSortedMapCharAsKey(charAsKey);
-        DisplayHelper.displayMapWithRoutes(sortedCharAsKey);
-        final Map<String, TreeNode> routeAsKey = Mapping.createMapRouteAsKey(charAsKey);
-        final Map<String, TreeNode> filteredMap = Mapping.createMapFilteredByRoutes(routeAsKey);
+        final var sortedMapCharAsKey = Mapping.createSortedMapCharAsKey(mapCharAsKey);
+        DisplayHelper.displayMapWithRoutes(sortedMapCharAsKey);
+        final var mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharAsKey);
+        final var filteredMap = Mapping.createMapFilteredByRoutes(mapRouteAsKey);
         DisplayHelper.displayFilteredMap(filteredMap);
-        final String encodedRoute = RouteHelper.encodeRoute(charAsKey, string);
+        final String encodedRoute = RouteHelper.encodeRoute(mapCharAsKey, string);
         DisplayHelper.displayRoute(encodedRoute);
         final List<String> encodedBitStrings = StringSplitter.split(encodedRoute, BYTE_LENGTH);
         DisplayHelper.displayBitStrings(encodedBitStrings);
