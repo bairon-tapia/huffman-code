@@ -40,7 +40,7 @@ class RoutesTesting {
             Assertions.fail("Error: The maps do not have the same amount of elements, thus it is not possible to " +
                     "assess whether they contain the same elements");
         }
-        final var sortedCharAsKey = Mapping.createSortedMapRouteAsKey(mapCharAsKey);
+        final var sortedCharAsKey = Mapping.createMapSortedByRoute(mapCharAsKey);
         final var sortedRouteAsKey = new TreeMap<>(mapRouteAsKey);
         final var iteratorCharAsKey = sortedCharAsKey.entrySet().iterator();
         final var iteratorRouteAsKey = sortedRouteAsKey.entrySet().iterator();

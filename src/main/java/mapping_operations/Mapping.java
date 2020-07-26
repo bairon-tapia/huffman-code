@@ -18,7 +18,7 @@ public final class Mapping {
         throw new UnsupportedOperationException();
     }
 
-    public static Map<Character, TreeNode> createSortedMapCharAsKey(@NonNull final Map<Character, TreeNode> mapCharAsKey) {
+    public static Map<Character, TreeNode> createMapSortedByKey(@NonNull final Map<Character, TreeNode> mapCharAsKey) {
         final var sortedMap = mapCharAsKey
                 .entrySet()
                 .stream()
@@ -28,7 +28,7 @@ public final class Mapping {
         return (Collections.unmodifiableMap(sortedMap));
     }
 
-    public static Map<Character, TreeNode> createSortedMapRouteAsKey(final @NonNull Map<Character, TreeNode> mapCharAsKey) {
+    public static Map<Character, TreeNode> createMapSortedByRoute(final @NonNull Map<Character, TreeNode> mapCharAsKey) {
         final var sortedMap = mapCharAsKey
                 .entrySet()
                 .stream()
@@ -51,7 +51,7 @@ public final class Mapping {
                 mapCharAsKey.put(character, treeNode);
             }
         }
-        return (createSortedMapCharAsKey(mapCharAsKey));
+        return (createMapSortedByKey(mapCharAsKey));
     }
 
     public static Map<String, TreeNode> createMapRouteAsKey(@NonNull final Map<Character, TreeNode> mapCharAsKey) {

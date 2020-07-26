@@ -33,7 +33,7 @@ public final class Encoder {
         final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
         final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
         DisplayHelper.displayHuffmanTree(rootNode);
-        final var sortedMapCharAsKey = Mapping.createSortedMapCharAsKey(mapCharAsKey);
+        final var sortedMapCharAsKey = Mapping.createMapSortedByKey(mapCharAsKey);
         DisplayHelper.displayMapWithRoutes(sortedMapCharAsKey);
         final var mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharAsKey);
         final var filteredMap = Mapping.createMapFilteredByRoutes(mapRouteAsKey);
