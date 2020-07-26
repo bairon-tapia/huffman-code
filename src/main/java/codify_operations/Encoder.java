@@ -29,14 +29,15 @@ public final class Encoder {
     public Encoder() {
         final String string = FilesHandler.readString();
         DisplayHelper.displayString(string);
-        final Map<Character, TreeNode> charAsKey = Mapping.createMapCharacterAsKey(string);
+        final Map<Character, TreeNode> charAsKey = Mapping.createMapCharAsKey(string);
         DisplayHelper.displayMap(charAsKey);
         final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(charAsKey);
         final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
         DisplayHelper.displayHuffmanTree(rootNode);
-        DisplayHelper.displayMapWithRoutes(charAsKey);
+        final Map<Character, TreeNode> sortedCharAsKey = Mapping.createSortedMapCharAsKey(charAsKey);
+        DisplayHelper.displayMapWithRoutes(sortedCharAsKey);
         final Map<String, TreeNode> routeAsKey = Mapping.createMapRouteAsKey(charAsKey);
-        final Map<String, TreeNode> filteredMap = Mapping.filterByRoutesLength(routeAsKey);
+        final Map<String, TreeNode> filteredMap = Mapping.createMapFilteredByRoutes(routeAsKey);
         DisplayHelper.displayFilteredMap(filteredMap);
         final String encodedRoute = RouteHelper.encodeRoute(charAsKey, string);
         DisplayHelper.displayRoute(encodedRoute);
