@@ -54,8 +54,7 @@ public final class Mapping {
         return (createSortedMapCharAsKey(mapCharAsKey));
     }
 
-    public static Map<String, TreeNode> createMapRouteAsKey(@NonNull final Map<Character,
-            TreeNode> mapCharAsKey) {
+    public static Map<String, TreeNode> createMapRouteAsKey(@NonNull final Map<Character, TreeNode> mapCharAsKey) {
         final var mapRouteAsKey = mapCharAsKey
                 .entrySet()
                 .stream()
@@ -64,8 +63,7 @@ public final class Mapping {
         return (Collections.unmodifiableMap(mapRouteAsKey));
     }
 
-    public static Map<String, TreeNode> createMapFilteredByRoutes(@NonNull final Map<String,
-            TreeNode> mapRouteAsKey) {
+    public static Map<String, TreeNode> createMapFilteredByRoutes(@NonNull final Map<String, TreeNode> mapRouteAsKey) {
         final var filteredMap = mapRouteAsKey
                 .entrySet()
                 .stream()
@@ -75,8 +73,7 @@ public final class Mapping {
         return (Collections.unmodifiableMap(filteredMap));
     }
 
-    public static PriorityQueue<TreeNode> createPriorityQueue(@NonNull final Map<Character,
-            TreeNode> mapCharAsKey) {
+    public static PriorityQueue<TreeNode> createPriorityQueue(@NonNull final Map<Character, TreeNode> mapCharAsKey) {
         final var priorityQueue = new PriorityQueue<>(Comparator.comparing(TreeNode::getFrequency));
         priorityQueue.addAll(mapCharAsKey.values());
         return (priorityQueue);

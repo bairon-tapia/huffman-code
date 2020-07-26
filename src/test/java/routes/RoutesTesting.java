@@ -13,8 +13,7 @@ class RoutesTesting {
 
     private static final String DEFAULT_STRING = "This is a test!";
 
-    private final Map<Character, TreeNode> mapCharAsKey =
-            Mapping.createMapCharAsKey(DEFAULT_STRING);
+    private final Map<Character, TreeNode> mapCharAsKey = Mapping.createMapCharAsKey(DEFAULT_STRING);
     private final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
     private final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
     private final Map<String, TreeNode> mapRouteAsKey = Mapping.createMapRouteAsKey(mapCharAsKey);

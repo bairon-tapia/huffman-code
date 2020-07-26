@@ -50,9 +50,9 @@ public final class DisplayHelper {
             return;
         }
         System.out.println();
-        System.out.println("Displaying all unique characters whose corresponding routes " +
-                "are equal or greater than the amount of digits of a byte (8), meaning the compression will be " +
-                "ineffective when handling these characters.");
+        System.out.println("Displaying all unique characters whose corresponding routes  are equal or greater than " +
+                "the amount of digits of a byte (8), meaning the compression will be ineffective when handling " +
+                "these characters.");
         InputHelper.promptEnterKey();
         map.forEach((key, value) -> System.out.println(value));
         System.out.println();

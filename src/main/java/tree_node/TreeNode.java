@@ -72,8 +72,7 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
     }
 
     private static void traverseNodes(@NonNull final StringBuilder stringBuilder, @NonNull final String padding,
-                                      @NonNull final String pointer,
-                                      final TreeNode treeNode, boolean hasRightSibling) {
+                                      @NonNull final String pointer, final TreeNode treeNode, boolean hasRightSibling) {
         if (treeNode == null) {
             return;
         }
@@ -133,7 +132,8 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
 
     @Override
     public String toString() {
-        return (route.isEmpty() ? String.format("%1c - %-6d", element, frequency) : String.format("%1c - %-6d - %-30s", element, frequency, route));
+        return (route.isEmpty() ? String.format("%1c - %-6d", element, frequency) : String.format("%1c - %-6d - " +
+                "%-30s", element, frequency, route));
     }
 
     public boolean isLeaf() {
