@@ -1,9 +1,6 @@
 package routes;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
+import java.util.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,8 +22,8 @@ class RoutesTesting {
 
     @Test
     void areRoutesUnique() {
-        final var routes = new HashSet<String>();
-        for (Map.Entry<Character, TreeNode> entry : mapCharAsKey.entrySet()) {
+        final Set<String> routes = new HashSet<>();
+        for (var entry : mapCharAsKey.entrySet()) {
             final char character = entry.getKey();
             final String route = entry.getValue().getRoute();
             if (routes.contains(route)) {

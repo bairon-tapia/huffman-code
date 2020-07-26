@@ -1,6 +1,7 @@
 package codify_operations;
 
 import java.util.List;
+import java.util.PriorityQueue;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -29,7 +30,7 @@ public final class Encoder {
         DisplayHelper.displayString(string);
         final var mapCharAsKey = Mapping.createMapCharAsKey(string);
         DisplayHelper.displayMap(mapCharAsKey);
-        final var priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
+        final PriorityQueue<TreeNode> priorityQueue = Mapping.createPriorityQueue(mapCharAsKey);
         final TreeNode rootNode = Mapping.createHuffmanTree(priorityQueue);
         DisplayHelper.displayHuffmanTree(rootNode);
         final var sortedMapCharAsKey = Mapping.createSortedMapCharAsKey(mapCharAsKey);
