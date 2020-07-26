@@ -74,9 +74,7 @@ public final class Mapping {
     }
 
     public static PriorityQueue<TreeNode> createPriorityQueue(@NonNull final Map<Character, TreeNode> mapCharAsKey) {
-        final var priorityQueue = new PriorityQueue<>(Comparator.comparing(TreeNode::getFrequency));
-        priorityQueue.addAll(mapCharAsKey.values());
-        return (priorityQueue);
+        return (new PriorityQueue<>(mapCharAsKey.values()));
     }
 
     public static TreeNode createHuffmanTree(@NonNull final PriorityQueue<TreeNode> priorityQueue) {
