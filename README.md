@@ -5,7 +5,7 @@ An implementation of the Huffman Code in Java.
 
 Logic of the program is as follows:
 
-1. It will look for an input file named "Input.txt" in the resources folder. If it does not exist, it will create one for you, containing [Pablo Neruda's Poema XX](https://bit.ly/2WeUXjl).
+1. It will look for an input file named "Input.txt" in the resources folder. If it does not exist, it will create one for you.
     - The project already supplies a file by default. A mere test file.
     - The project is bundled with several example files that might be of interest to you. Check [NOTES.md](src/main/resources/Example%20files/NOTES.md) for more details.
     - Obviously, if you wish to see how the program compresses an specific text, you'll have to provide it yourself. All you would need to do in such case is to rename your text file to "Input.txt" and replace it for [the already existing file with such name](src/main/resources/Input.txt) in the resources folder.
