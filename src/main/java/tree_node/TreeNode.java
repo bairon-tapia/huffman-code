@@ -49,7 +49,7 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
         setRoute(DEFAULT_ROUTE);
     }
 
-    public static void buildRoutes(@NonNull final String route, final TreeNode treeNode) {
+    public static void buildRoutes(@NonNull final String route, @NonNull final TreeNode treeNode) {
         if (treeNode.isLeaf()) {
             treeNode.setRoute(route);
             return;
@@ -97,7 +97,7 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
     }
 
     @Override
-    public int compareTo(final TreeNode treeNode) {
+    public int compareTo(@NonNull final TreeNode treeNode) {
         final int leftFrequency = this.frequency;
         final int rightFrequency = treeNode.frequency;
         if (leftFrequency != rightFrequency) {
@@ -127,7 +127,8 @@ public final class TreeNode implements AbstractNode<Character>, Comparable<TreeN
             return (false);
         }
         final TreeNode treeNode = (TreeNode) object;
-        return (Objects.equals(element, treeNode.getElement()) && Objects.equals(frequency, treeNode.getFrequency()) && Objects.equals(route, treeNode.getRoute()));
+        return (Objects.equals(element, treeNode.getElement()) && Objects.equals(frequency, treeNode.getFrequency()) &&
+                Objects.equals(route, treeNode.getRoute()));
     }
 
     @Override
